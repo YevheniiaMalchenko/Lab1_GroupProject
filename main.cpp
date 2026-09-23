@@ -19,7 +19,5 @@ int main() {
     cout << "Екстремум X: " << x << "\n";
     cout << "Екстремум Y: " << y << "\n";
     cout << "Ітерації: " << iters << "\n";
-    cout << "Статус коду: " << status << "\n";
-
     return 0;
 }
