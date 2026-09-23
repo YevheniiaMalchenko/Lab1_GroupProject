@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <memory>
+#include <cmath>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -20,12 +21,12 @@ int main()
     SetConsoleCP(CP_UTF8);
 #endif
 
-    auto data = make_shared<InputData>(InputData{
+    auto data = make_shared<const InputData>(InputData{
         [](double x) { return x * x; },
-        -2.0,
-        2.0,
-        0.0001
-    });
+            -2.0,
+            2.0,
+            0.0001
+        });
 
     auto resultA = calculateA(data);
     auto [x, y, iters, status] = *resultA;
@@ -51,6 +52,10 @@ int main()
         std::cerr << "Помилка: некоректні вхідні дані.\n";
         return 1;
     }
+
+    cout << "\nпорівняння алгоритмів\n";
+    cout << "Різниця значень X: " << abs(x - extremumX) << "\n";
+    cout << "Різниця кількості ітерацій: " << abs(iters - iterations) << "\n";
 
     return 0;
 }
